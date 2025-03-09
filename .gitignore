@@ -1,0 +1,16 @@
+# .gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.idea/
+*.iml
+env/
+venv/
+*.egg-info/
+dist/
+build/
+*.pkl
+*.joblib
+*.log
