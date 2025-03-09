@@ -11,7 +11,7 @@ def load_and_preprocess_data():
     df = pd.read_csv(url)
 
     # Take a smaller subset for faster testing (optional, remove if you want full dataset)
-    df = df.sample(n=1000, random_state=42)
+    # df = df.sample(n=1000, random_state=42)
 
     print("Dataset Info:")
     print(df['sentiment'].value_counts())
