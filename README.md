@@ -28,11 +28,15 @@ This project implements an end-to-end MLOps pipeline for sentiment analysis usin
 - MLflow for experiment tracking
 - Basic logging for API requests
 
-## Running the Project
-1. Install requirements: `pip install -r requirements.txt`
-2. Train model: `python train.py`
-3. Run API: `uvicorn app:app --reload`
-4. Test with: `curl -X POST "http://localhost:8000/predict" -H "Content-Type: application/json" -d '{"text": "great movie"}'`
+
+## Running Locally
+1. Activate virtual env: `.\venv\Scripts\activate`
+2. Install dependencies: `pip install -r requirements.txt`
+3. Train model: `python src/train.py`
+   - Saves models to root directory
+4. Run API: `uvicorn src.app:app --reload`
+5. Test: `curl -X POST "http://localhost:8000/predict" -H "Content-Type: application/json" -d '{"text": "Great movie"}'`
+
 
 ## Future Improvements
 - Add authentication

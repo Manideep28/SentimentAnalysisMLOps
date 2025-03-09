@@ -9,19 +9,15 @@ app = FastAPI()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+MODEL_PATH = os.path.join(BASE_DIR, 'sentiment_model.pkl')
+TFIDF_PATH = os.path.join(BASE_DIR, 'tfidf_vectorizer.pkl')
 
-# Ensure the correct paths
-model_path = os.path.join(os.path.dirname(__file__), "../sentiment_model.pkl")
-vectorizer_path = os.path.join(os.path.dirname(__file__), "../tfidf_vectorizer.pkl")
-
-# Check if files exist before loading
-if not os.path.exists(model_path) or not os.path.exists(vectorizer_path):
-    raise FileNotFoundError("Model or vectorizer file is missing. Train the model first.")
-
-
-# Load models
-model = joblib.load('../sentiment_model.pkl')
-tfidf = joblib.load('../tfidf_vectorizer.pkl')
+try:
+    model = joblib.load(MODEL_PATH)
+    tfidf = joblib.load(TFIDF_PATH)
+except FileNotFoundError:
+    raise FileNotFoundError(f"Model file at {MODEL_PATH} or vectorizer file at {TFIDF_PATH} is missing. Train the model first.")
 
 
 class TextInput(BaseModel):
