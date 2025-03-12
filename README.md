@@ -37,6 +37,11 @@ This project implements an end-to-end MLOps pipeline for sentiment analysis usin
 4. Run API: `uvicorn src.app:app --reload`
 5. Test: `curl -X POST "http://localhost:8000/predict" -H "Content-Type: application/json" -d '{"text": "Great movie"}'`
 
+## Run with Docker
+1. Build the Docker Image:
+   ```bash
+   docker build -t sentiment-api .
+   docker run -p 8000:8000 sentiment-api 
 
 ## Future Improvements
 - Add authentication
